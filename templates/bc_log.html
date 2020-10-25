@@ -1,0 +1,22 @@
+<h4>Log <{if $estremi.from>0}>dei voti dal <{$estremi.from}> al <{$estremi.to}><{else}>dei primi 30 voti<{/if}></h4>
+
+<table style="border: 1px solid #feed26; background-color: #000000;" border="1">
+<thead>
+<tr>
+<th>Data</th><th>Persona</th><th>come?</th><th>Motivo</th>
+</tr>
+</thead>
+<tbody>
+<{foreach from=$voti item=voto}>
+<tr>
+<td><{$voto.data}></td>
+<td><{$voto.uname}></td>
+<td><{$voto.come}></td>
+<td><{$voto.motivo}></td>
+</tr>
+<{/foreach}>
+<tr><td colspan="4" align="center"><{$previous}><{$next}></td></tr>
+</tbody>
+</table>
+
+

@@ -1,0 +1,70 @@
+<table width="100%" background="images/legno.jpg" align="center" border="0" cellspacing="0" cellpadding="0">
+<tr height="12"><td width="15">&nbsp;</td><td>&nbsp;</td><td width="15">&nbsp;</td></tr>
+
+<tr><td>&nbsp;</td><td>
+
+<table width="100%" background="images/lavagna.jpg" border="0"><tr>
+<td width="50%" style="border-right: 3px solid #ffffff;">
+
+<p align="center"><font size=+3> Buoni </font>
+
+<!-- lista dei buoni -->
+<{foreach from=$buoni item=buono}>
+<p style="border-bottom: 1px dashed #ffffff; color: #ffffff; font-size: 14pt;">
+<a style="font-size: 110%;" href="../../userinfo.php?uid=<{$buono.uid}>"><{$buono.uname}></a>: 
+<{if $buono.last}>
+<img src="images/new.gif" border="0">
+<{/if}>
+<br><{$buono.motivo}>
+</p>
+<{/foreach}>
+<!-- fine lista buoni -->
+
+</td><td width="50%">
+
+<p align="center"><font size=+3> Cattivi </font>
+
+<!-- lista dei cattivi -->
+<{foreach from=$cattivi item=cattivo}>
+<p style="border-bottom: 1px dashed #ffffff; color: #ffffff; font-size: 14pt;">
+<a style="font-size: 110%;" href="../../userinfo.php?uid=<{$cattivo.uid}>"><{$cattivo.uname}></a>: 
+<{if $cattivo.last}>
+<img src="images/new.gif" border="0">
+<{/if}>
+<br> <{$cattivo.motivo}></p>
+<{/foreach}>
+<!-- fine lista cattivi -->
+
+</td></tr></table>
+
+</td><td>&nbsp;</td></tr>
+
+<tr height="12"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</table>
+
+<div class="outer" align="center">
+<form class="odd" action="?op=vote" method="post">
+<p>Persona: <select name="personaggio">
+<{foreach from=$users item=user}>
+<option value="<{$user.uid}>"><{$user.uname}></option>
+<{/foreach}>
+</select>
+Come: <select name="come">
+<option value="1">Buono</option>
+<option value="2">Cattivo</option>
+</select><br>
+Motivo: <input size="30" name="motivo"></p>
+<p align="center"><input type="submit"><input type="reset"></p>
+
+<p>I giudizi espressi in questa sezione sono anonimi e non verranno filtrati.
+Viene comunque riservato il diritto da parte dei webmasters di rimuovere
+commenti che sono ritenuti offensivi o caluniosi.</p>
+</form>
+</div>
+
+<{if $comment}>
+<div style="border: 1px solid #feed26; padding: 2px; background-color: #000000;">
+<p><{$comment}></p>
+</div>
+<{/if}>
+<p align="center"><a href="?op=log"><{$vislog}></a></p>
